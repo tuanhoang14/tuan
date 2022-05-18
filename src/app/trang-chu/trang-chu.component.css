@@ -1,3 +1,10 @@
 table {
   width: 100%;
 }
+.banghang {
+  background-color: rgb(138, 206, 238);
+}
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
