@@ -17,7 +17,7 @@ export class TrangChuComponent implements OnInit {
 
   filter = "";
   color = "";
-  dataSource1 = ELEMENT_DATA;
+  dataSource1 = filterTest(this.filter);
   console = console;
   page = 0;
   displayedColumns: string[] = ['position', 'name', 'price', 'symbol'];
@@ -40,14 +40,11 @@ export class TrangChuComponent implements OnInit {
       element.color = getRandomColor();
     });
   }
-
-  filterTest(filter:string){
-    let result = ELEMENT_DATA.filter(data => data.name.includes(filter));
-    return result;
+  filterTest1(){
+    this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(""));
   }
-
-
 }
+
 function getRandomColor() {
   let letters = '0123456789ABCDEF';
   let color = '#';
@@ -57,6 +54,10 @@ function getRandomColor() {
   return color;
 }
 
+function filterTest(filter:string){
+  let result = ELEMENT_DATA.filter(data => data.name.includes(filter));
+  return result;
+}
 
 
 
