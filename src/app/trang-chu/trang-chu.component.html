@@ -3,7 +3,7 @@
 <button (click)="sortData(sortName)">Sort Name</button>
 <button (click)="sortData(sortPrice)">Sort Price</button>
 <mat-grid-list cols="4" rowHeight="150px">
-  <mat-grid-tile *ngFor="let data of dataSource1"  >
+  <mat-grid-tile *ngFor="let data of itemPage"  >
     <table>
       <tr>
         <img src="img_avatar2.png" alt="Avatar" class="avatar">

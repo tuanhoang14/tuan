@@ -17,9 +17,9 @@ export class TrangChuComponent implements OnInit {
   soTrang = 0;
   sortName : Sort = {active:'name',direction:'asc'} ;
   sortPrice : Sort = {active:'price',direction:'asc'} ;
-  itemPage : Array<any>=[];
   color = "";
   dataSource1 = filterTest(this.filter);
+  itemPage = paginationPage(this.dataSource1, this.soTrang);
   page = 0;
   displayedColumns: string[] = ['id', 'name', 'price', 'mieuTa'];
   sortedData= filterTest(this.filter);
