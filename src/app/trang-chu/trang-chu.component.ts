@@ -15,7 +15,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 export class TrangChuComponent implements OnInit {
 
-  filter = "";
+  public filter = "";
   color = "";
   dataSource1 = filterTest(this.filter);
   console = console;
@@ -39,10 +39,12 @@ export class TrangChuComponent implements OnInit {
     ELEMENT_DATA.forEach(element => {
       element.color = getRandomColor();
     });
+    filterTest(this.filter)
   }
-  filterTest1(){
-    this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(""));
+  filterTest1(value: any){
+    this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(value));
   }
+
 }
 
 function getRandomColor() {
