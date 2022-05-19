@@ -33,6 +33,7 @@
   aria-label="Select page of periodic elements">
 </mat-paginator>
 <input #box (keyup)="filterTest1(box.value)">
+<button (click)="sortData(sortName)">Sort Name</button>
 <mat-grid-list cols="4"  rowHeight="100px">
   <mat-grid-tile *ngFor="let data of dataSource1"  [style.background]=data.color>
     <ul>
@@ -44,5 +45,6 @@
     </ul>
   </mat-grid-tile>
 </mat-grid-list>
+
 
 </div>

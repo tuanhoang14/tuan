@@ -3,7 +3,7 @@ import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {matSortAnimations, Sort} from '@angular/material/sort';
 
 
 
@@ -16,12 +16,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 export class TrangChuComponent implements OnInit {
 
   public filter = "";
+  sortName : Sort = {active:'name',direction:'asc'} ;
   color = "";
   dataSource1 = filterTest(this.filter);
   console = console;
   page = 0;
   displayedColumns: string[] = ['position', 'name', 'price', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  sortedData= filterTest(this.filter);
   @ViewChild(MatPaginator) paginator : MatPaginator =  new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
   constructor() { }
 
@@ -41,10 +43,44 @@ export class TrangChuComponent implements OnInit {
     });
     filterTest(this.filter)
   }
+
   filterTest1(value: any){
     this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(value));
   }
 
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.dataSource1 = pageOfItems;
+  }
+
+  sortData(sort: Sort) {
+    const data = this.dataSource1.slice();
+    if (!sort.active || sort.direction === '') {
+      this.dataSource1 = data;
+      return;
+    }
+
+    this.dataSource1 = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name':
+          return compare(a.name, b.name, isAsc);
+        case 'position':
+          return compare(a.position, b.position, isAsc);
+        case 'price':
+          return compare(a.price, b.price, isAsc);
+        case 'symbol':
+          return compare(a.symbol, b.symbol, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+
+}
+
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
 
 function getRandomColor() {
