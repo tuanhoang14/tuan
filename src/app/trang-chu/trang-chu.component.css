@@ -1,10 +1,14 @@
 table {
   width: 100%;
 }
-.banghang {
-  background-color: rgb(138, 206, 238);
+.ban-hang {
+  padding:10%;
 }
 img.avatar {
   width: 40%;
   border-radius: 50%;
+}
+.mat-grid-tile {
+  border: solid 2px #000;
+  border-color: rgb(76, 143, 192);
 }

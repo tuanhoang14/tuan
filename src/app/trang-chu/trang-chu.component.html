@@ -1,50 +1,30 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> 1{{element.name}} </td>
-    </ng-container>
-
-    <!-- price Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> price </th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-  showFirstLastButtons
-  aria-label="Select page of periodic elements">
-</mat-paginator>
+<div class="ban-hang">
 <input #box (keyup)="filterTest1(box.value)">
 <button (click)="sortData(sortName)">Sort Name</button>
-<mat-grid-list cols="4"  rowHeight="100px">
-  <mat-grid-tile *ngFor="let data of dataSource1"  [style.background]=data.color>
-    <ul>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-      <li>{{data.name}}</li>
-      <li>{{data.position}}</li>
-      <li>{{data.price}}</li>
-      <li>{{data.symbol}}</li>
-    </ul>
+<button (click)="sortData(sortPrice)">Sort Price</button>
+<mat-grid-list cols="4" rowHeight="150px">
+  <mat-grid-tile *ngFor="let data of dataSource1"  >
+    <table>
+      <tr>
+        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+      </tr>
+      <tr>
+        <td>{{data.name}}</td>
+      </tr>
+      <tr>
+        <td>Gia:</td>
+        <td>{{data.price}}</td>
+      </tr>
+      <tr>
+        <td>Mieu ta:</td>
+        <td>{{data.mieuTa}}</td>
+      </tr>
+      <button>Mua</button>
+    </table>
   </mat-grid-tile>
 </mat-grid-list>
-
-
+<button (click)="sortData(sortPrice)">Truoc</button>
+&nbsp;
+&nbsp;
+<button (click)="sortData(sortPrice)">Sau</button>
 </div>
