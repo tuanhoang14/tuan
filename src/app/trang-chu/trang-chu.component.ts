@@ -14,22 +14,20 @@ import {matSortAnimations, Sort} from '@angular/material/sort';
 export class TrangChuComponent implements OnInit {
 
   public filter = "";
-  soTrang = 1;
+  soTrang = 0;
   sortName : Sort = {active:'name',direction:'asc'} ;
   sortPrice : Sort = {active:'price',direction:'asc'} ;
-
+  itemPage : Array<any>=[];
   color = "";
   dataSource1 = filterTest(this.filter);
-  console = console;
   page = 0;
   displayedColumns: string[] = ['id', 'name', 'price', 'mieuTa'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   sortedData= filterTest(this.filter);
   @ViewChild(MatPaginator) paginator : MatPaginator =  new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
   constructor() { }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+
   }
 
   ngAfterContentChecked() {
@@ -39,14 +37,14 @@ export class TrangChuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    ELEMENT_DATA.forEach(element => {
-      element.color = getRandomColor();
-    });
     filterTest(this.filter);
   }
 
   filterTest1(value: any){
     this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(value));
+    this.itemPage = paginationPage(this.dataSource1, this.soTrang);
+    console.log( this.itemPage);
+
   }
 
   sortData(sort: Sort) {
@@ -71,6 +69,7 @@ export class TrangChuComponent implements OnInit {
           return 0;
       }
     });
+    this.itemPage = paginationPage(this.dataSource1, this.soTrang);
   }
 
 }
@@ -79,25 +78,16 @@ function compare(a: number | string, b: number | string, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
 
-function getRandomColor() {
-  let letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 function filterTest(filter:string){
   let result = ELEMENT_DATA.filter(data => data.name.includes(filter));
   return result;
 }
 
-function paginationPage(dataSource : PeriodicElement[], sotrang: number){
+function paginationPage(dataSource : PeriodicElement[], soTrang: number){
   let result : PeriodicElement[]=[];
   let items = 0;
-  let itemOfPage = sotrang  * 10;
-  for(itemOfPage; itemOfPage <= dataSource.length || items < 10 ; itemOfPage++){
+  let itemOfPage = soTrang  * 10;
+  for(itemOfPage; itemOfPage < dataSource.length && items < 10 ; itemOfPage++){
     items++;
     result.push(dataSource[itemOfPage]);
   }
