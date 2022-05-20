@@ -42,13 +42,15 @@ export class TrangChuComponent implements OnInit {
 
   filterTest1(value: any){
     this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(value));
+    this.soTrang = 0;
     this.itemPage = paginationPage(this.dataSource1, this.soTrang);
-    console.log( this.itemPage);
-
   }
 
   sortData(sort: Sort) {
     const data = this.dataSource1.slice();
+    console.log( this.soTrang);
+    console.log( this.itemPage );
+    console.log( this.dataSource1);
     if (!sort.active || sort.direction === '') {
       this.dataSource1 = data;
       return;
@@ -69,7 +71,23 @@ export class TrangChuComponent implements OnInit {
           return 0;
       }
     });
+    this.soTrang = 0;
     this.itemPage = paginationPage(this.dataSource1, this.soTrang);
+
+    console.log( this.soTrang);
+    console.log( this.itemPage );
+    console.log( this.dataSource1);
+
+  }
+
+  TrangSau() {
+    this.soTrang*12*2 < this.dataSource1.length ? this.soTrang ++ : this.soTrang ;
+    this.itemPage = this.soTrang * 12 < this.dataSource1.length ? paginationPage(this.dataSource1, this.soTrang) : this.itemPage;
+  }
+
+  TrangTruoc() {
+    this.soTrang*12*2 > this.dataSource1.length ? this.soTrang -- : this.soTrang ;
+    this.itemPage = this.soTrang * 12 < this.dataSource1.length ? paginationPage(this.dataSource1, this.soTrang) : this.itemPage;
   }
 
 }
@@ -86,8 +104,8 @@ function filterTest(filter:string){
 function paginationPage(dataSource : PeriodicElement[], soTrang: number){
   let result : PeriodicElement[]=[];
   let items = 0;
-  let itemOfPage = soTrang  * 10;
-  for(itemOfPage; itemOfPage < dataSource.length && items < 10 ; itemOfPage++){
+  let itemOfPage = soTrang  * 12;
+  for(itemOfPage; itemOfPage < dataSource.length && items < 12 ; itemOfPage++){
     items++;
     result.push(dataSource[itemOfPage]);
   }
@@ -107,12 +125,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {id: 2, name: 'Helium', price: 4.0026, mieuTa: 'He',color:"null"},
   {id: 3, name: 'Lithium', price: 6.941, mieuTa: 'Li',color:"null"},
   {id: 4, name: 'Beryllium', price: 9.0122, mieuTa: 'Be',color:"null"},
-  {id: 5, name: 'Boron', price: 10.811, mieuTa: 'B',color:"null"},
-  {id: 6, name: 'Carbon', price: 12.0107, mieuTa: 'C',color:"null"},
+  {id: 5, name: 'Boron', price: 12.811, mieuTa: 'B',color:"null"},
+  {id: 6, name: 'Carbon', price: 12.0127, mieuTa: 'C',color:"null"},
   {id: 7, name: 'Nitrogen', price: 14.0067, mieuTa: 'N',color:"null"},
   {id: 8, name: 'Oxygen', price: 15.9994, mieuTa: 'O',color:"null"},
   {id: 9, name: 'Fluorine', price: 18.9984, mieuTa: 'F',color:"null"},
-  {id: 10, name: 'Neon', price: 20.1797, mieuTa: 'Ne',color:"null"},
+  {id: 12, name: 'Neon', price: 20.1797, mieuTa: 'Ne',color:"null"},
   {id: 11, name: 'Sodium', price: 22.9897, mieuTa: 'Na',color:"null"},
   {id: 12, name: 'Magnesium', price: 24.305, mieuTa: 'Mg',color:"null"},
   {id: 13, name: 'Aluminum', price: 26.9815, mieuTa: 'Al',color:"null"},
