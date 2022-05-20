@@ -1,12 +1,12 @@
 <div class="ban-hang">
-<input placeholder="Tim kiem" #box (keyup)="filterTest1(box.value)">
+<input placeholder="Tim kiem" #box (keyup)="filterTest(box.value)">
 <button (click)="sortData(sortName)">Sort Name</button>
 <button (click)="sortData(sortPrice)">Sort Price</button>
 <mat-grid-list cols="4" rowHeight="150px">
   <mat-grid-tile *ngFor="let data of itemPage"  >
     <table>
       <tr>
-        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        <td colspan="2" class="text-center-row"><img src="img_avatar2.png" alt="Avatar" class="avatar"></td>
       </tr>
       <tr>
         <td>{{data.name}}</td>
@@ -19,7 +19,11 @@
         <td>Mieu ta:</td>
         <td>{{data.mieuTa}}</td>
       </tr>
-      <button>Mua</button>
+      <tr>
+        <td></td>
+        <td class="text-center-row"><button>Mua</button></td>
+      </tr>
+
     </table>
   </mat-grid-tile>
 </mat-grid-list>

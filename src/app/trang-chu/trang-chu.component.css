@@ -12,3 +12,7 @@ img.avatar {
   border: solid 2px #000;
   border-color: rgb(76, 143, 192);
 }
+
+.text-center-row {
+  text-align: center;
+}
