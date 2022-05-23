@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="w3-bar w3-blue">
   <a class="w3-bar-item w3-button w3-right">Dang nhap</a>
-  <app-gio-hang></app-gio-hang>
+  <app-gio-hang [dsSanPham]="dsSp"></app-gio-hang>
 </div>
 <div class="ban-hang">
 <input placeholder="Tim kiem" #box (keyup)="filterTest(box.value)">

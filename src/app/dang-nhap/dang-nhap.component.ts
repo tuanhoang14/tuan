@@ -21,7 +21,6 @@ export class DangNhapComponent implements OnInit {
   ngOnInit(): void {
   }
   dangNhap(){
-    console.log("hi");
     this.dangNhapService.DangNhap(this.tenDangNhap,this.matKhau) ? this.router.navigate(['/TrangBanHang']): alert("Ten dang nhap hoac mat khau sai");
   }
 }
