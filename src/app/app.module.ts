@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DangNhapComponent } from './dang-nhap/dang-nhap.component';
@@ -50,6 +49,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { GioHangComponent } from './gio-hang/gio-hang.component';
 import { FormsModule } from '@angular/forms';
+import { IgxDropDownModule } from 'igniteui-angular';
 
 @NgModule({
   declarations: [
