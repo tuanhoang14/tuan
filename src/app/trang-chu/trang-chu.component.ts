@@ -4,6 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {matSortAnimations, Sort} from '@angular/material/sort';
+import { DangNhapService } from './../dang-nhap.service';
 
 @Component({
   selector: 'app-trang-chu',
@@ -15,15 +16,17 @@ export class TrangChuComponent implements OnInit {
 
   public filter = "";
   soTrang = 0;
+  page = 0;
+  dsSp : PeriodicElement[] = [];
   sortName : Sort = {active:'name',direction:'asc'} ;
   sortPrice : Sort = {active:'price',direction:'asc'} ;
   dataSource1 = filterTest(this.filter);
   itemPage = paginationPage(this.dataSource1, this.soTrang);
-  page = 0;
   displayedColumns: string[] = ['id', 'name', 'price', 'mieuTa'];
   sortedData= filterTest(this.filter);
+
   @ViewChild(MatPaginator) paginator : MatPaginator =  new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
-  constructor() { }
+  constructor(private dangNhapService : DangNhapService) { }
 
   ngAfterViewInit() {
 
@@ -36,6 +39,8 @@ export class TrangChuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("sdgs");
+    console.log(this.dangNhapService.tenDangNhap);
   }
 
   filterTest(value: any){
@@ -80,6 +85,12 @@ export class TrangChuComponent implements OnInit {
     this.itemPage = this.soTrang * 12 < this.dataSource1.length ? paginationPage(this.dataSource1, this.soTrang) : this.itemPage;
   }
 
+  ThemSp(id:any){
+    const index = this.dataSource1.map( (i: { id: any; }) => i.id).indexOf(id);
+    this.dsSp.push(this.dataSource1[index]);
+    console.log(this.dsSp);
+  }
+
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
@@ -110,6 +121,8 @@ export interface PeriodicElement {
   mieuTa: string;
   color: string;
 }
+
+
 const ELEMENT_DATA: PeriodicElement[] = [
   {id: 1, name: 'Hydrogen', price: 1.0079, mieuTa: 'ABC',color:"null"},
   {id: 2, name: 'Helium', price: 4.0026, mieuTa: 'ABC',color:"null"},

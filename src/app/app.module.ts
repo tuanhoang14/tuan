@@ -48,12 +48,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import { GioHangComponent } from './gio-hang/gio-hang.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     DangNhapComponent,
-    TrangChuComponent
+    TrangChuComponent,
+    GioHangComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +105,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
     PortalModule,
     ScrollingModule,
     JwPaginationModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
