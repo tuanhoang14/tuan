@@ -49,7 +49,16 @@ import {MatTreeModule} from '@angular/material/tree';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { GioHangComponent } from './gio-hang/gio-hang.component';
 import { FormsModule } from '@angular/forms';
-import { IgxDropDownModule } from 'igniteui-angular';
+import {
+	IgxDropDownModule,
+	IgxButtonModule,
+	IgxToggleModule,
+	IgxPrefixModule,
+	IgxSuffixModule,
+	IgxIconModule,
+	IgxDividerModule
+ } from "igniteui-angular";
+
 
 @NgModule({
   declarations: [
@@ -106,6 +115,13 @@ import { IgxDropDownModule } from 'igniteui-angular';
     ScrollingModule,
     JwPaginationModule,
     FormsModule,
+    IgxDropDownModule,
+    IgxButtonModule,
+    IgxToggleModule,
+    IgxPrefixModule,
+    IgxSuffixModule,
+    IgxIconModule,
+    IgxDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
