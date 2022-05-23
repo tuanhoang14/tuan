@@ -1,6 +1,6 @@
 <div class="dropdown">
   <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content" *ngFor="let data of dsSanPham" >
-    <a>{{data.id}}</a>
+  <div class="dropdown-content" *ngFor="let data of dsSanPham; let i = index" >
+    <a>{{data.id}}</a> <span (click)="removeSp(i)">Xoa</span>
   </div>
 </div>

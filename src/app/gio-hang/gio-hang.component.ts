@@ -15,7 +15,10 @@ export class GioHangComponent implements OnInit {
 
   }
   removeSp(spId:any){
+    console.log(spId);
     const index = this.dsSanPham.map( (i: { id: any; }) => i.id).indexOf(spId);
+    this.dsSanPham.splice(spId);
+    console.log('fdf');
   }
 }
 
