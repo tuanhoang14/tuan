@@ -1,4 +1,4 @@
-import { ActivatedRoute, Routes } from '@angular/router';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { DangNhapService } from './../dang-nhap.service';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,14 +14,15 @@ export class DangNhapComponent implements OnInit {
 
   constructor(
     private dangNhapService : DangNhapService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
   }
   dangNhap(){
     console.log("hi");
-    this.dangNhapService.DangNhap(this.tenDangNhap,this.matKhau) ? window.location.href = './TrangBanHang': alert("Ten dang nhap hoac mat khau sai");
+    this.dangNhapService.DangNhap(this.tenDangNhap,this.matKhau) ? this.router.navigate(['/TrangBanHang']): alert("Ten dang nhap hoac mat khau sai");
   }
 }
 
