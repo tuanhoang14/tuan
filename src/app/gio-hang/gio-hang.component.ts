@@ -14,11 +14,8 @@ export class GioHangComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  removeSp(spId:any){
-    console.log(spId);
-    const index = this.dsSanPham.map( (i: { id: any; }) => i.id).indexOf(spId);
-    this.dsSanPham.splice(spId);
-    console.log('fdf');
+  removeSp(index:any){
+    this.dsSanPham.splice(index,index+1);
   }
 }
 
