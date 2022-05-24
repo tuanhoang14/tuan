@@ -31,7 +31,7 @@ export class TrangChuComponent implements OnInit {
   @ViewChild(MatPaginator) paginator : MatPaginator =  new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
   constructor(private dangNhapService : DangNhapService) {
     this.tenDangNhap = this.dangNhapService.tenDangNhap;
-    this.trangThaiDangNhap = this.trangThaiDangNhap;
+    this.trangThaiDangNhap = this.dangNhapService.trangThaiDangNhap;
    }
 
   ngAfterViewInit() {
@@ -80,21 +80,28 @@ export class TrangChuComponent implements OnInit {
   }
 
   TrangSau() {
-    this.soTrang*12*2 < this.dataSource1.length ? this.soTrang ++ : this.soTrang ;
+    this.soTrang * 12 * 2 < this.dataSource1.length ? this.soTrang ++ : this.soTrang ;
     this.itemPage = this.soTrang * 12 < this.dataSource1.length ? phanTrang(this.dataSource1, this.soTrang) : this.itemPage;
   }
 
   TrangTruoc() {
-    this.soTrang*12*2 > this.dataSource1.length ? this.soTrang -- : this.soTrang ;
+    this.soTrang * 12 * 2 > this.dataSource1.length ? this.soTrang -- : this.soTrang ;
     this.itemPage = this.soTrang * 12 < this.dataSource1.length ? phanTrang(this.dataSource1, this.soTrang) : this.itemPage;
   }
 
   ThemSp(id:any){
+    if(this.trangThaiDangNhap == 0)
+    {
+      alert("Ban phai dang nhap");
+      return;
+    }
     const index = this.dataSource1.map( (i: { id: any; }) => i.id).indexOf(id);
     this.dsSp.push(this.dataSource1[index]);
-    console.log(this.dsSp);
   }
 
+  trangThaiDangNhap1(){
+    return this.trangThaiDangNhap == 0 ? false : true;
+  }
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {
@@ -111,7 +118,7 @@ function phanTrang(dataSource : PeriodicElement[], soTrang: number){
   let items = 0;
   let itemOfPage = soTrang  * 12;
   for(itemOfPage; itemOfPage < dataSource.length && items < 12 ; itemOfPage++){
-    items++;
+    items ++;
     result.push(dataSource[itemOfPage]);
   }
   return result;
