@@ -21,11 +21,12 @@ export class TrangChuComponent implements OnInit {
   sortName : Sort = {active:'name',direction:'asc'} ;
   sortPrice : Sort = {active:'price',direction:'asc'} ;
   dataSource1 = filterTest(this.filter);
-  itemPage = paginationPage(this.dataSource1, this.soTrang);
+  itemPage = phanTrang(this.dataSource1, this.soTrang);
   displayedColumns: string[] = ['id', 'name', 'price', 'mieuTa'];
   sortedData= filterTest(this.filter);
   tenDangNhap:string ='';
   trangThaiDangNhap = 0;
+
 
   @ViewChild(MatPaginator) paginator : MatPaginator =  new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
   constructor(private dangNhapService : DangNhapService) {
@@ -49,7 +50,7 @@ export class TrangChuComponent implements OnInit {
   filterTest(value: any){
     this.dataSource1 = ELEMENT_DATA.filter(data => data.name.includes(value));
     this.soTrang = 0;
-    this.itemPage = paginationPage(this.dataSource1, this.soTrang);
+    this.itemPage = phanTrang(this.dataSource1, this.soTrang);
   }
 
   sortData(sort: Sort) {
@@ -75,17 +76,17 @@ export class TrangChuComponent implements OnInit {
       }
     });
     this.soTrang = 0;
-    this.itemPage = paginationPage(this.dataSource1, this.soTrang);
+    this.itemPage = phanTrang(this.dataSource1, this.soTrang);
   }
 
   TrangSau() {
     this.soTrang*12*2 < this.dataSource1.length ? this.soTrang ++ : this.soTrang ;
-    this.itemPage = this.soTrang * 12 < this.dataSource1.length ? paginationPage(this.dataSource1, this.soTrang) : this.itemPage;
+    this.itemPage = this.soTrang * 12 < this.dataSource1.length ? phanTrang(this.dataSource1, this.soTrang) : this.itemPage;
   }
 
   TrangTruoc() {
     this.soTrang*12*2 > this.dataSource1.length ? this.soTrang -- : this.soTrang ;
-    this.itemPage = this.soTrang * 12 < this.dataSource1.length ? paginationPage(this.dataSource1, this.soTrang) : this.itemPage;
+    this.itemPage = this.soTrang * 12 < this.dataSource1.length ? phanTrang(this.dataSource1, this.soTrang) : this.itemPage;
   }
 
   ThemSp(id:any){
@@ -105,7 +106,7 @@ function filterTest(filter:string){
   return result;
 }
 
-function paginationPage(dataSource : PeriodicElement[], soTrang: number){
+function phanTrang(dataSource : PeriodicElement[], soTrang: number){
   let result : PeriodicElement[]=[];
   let items = 0;
   let itemOfPage = soTrang  * 12;
