@@ -1,8 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatTableModule} from '@angular/material/table';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {matSortAnimations, Sort} from '@angular/material/sort';
 import { DangNhapService } from './../dang-nhap.service';
 
@@ -27,8 +23,6 @@ export class TrangChuComponent implements OnInit {
   tenDangNhap:string ='';
   trangThaiDangNhap = 0;
 
-
-  @ViewChild(MatPaginator) paginator : MatPaginator =  new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
   constructor(private dangNhapService : DangNhapService) {
     this.tenDangNhap = this.dangNhapService.tenDangNhap;
     this.trangThaiDangNhap = this.dangNhapService.trangThaiDangNhap;
@@ -97,6 +91,7 @@ export class TrangChuComponent implements OnInit {
     }
     const index = this.dataSource1.map( (i: { id: any; }) => i.id).indexOf(id);
     this.dsSp.push(this.dataSource1[index]);
+    alert("Đã thêm vào giỏ hàng");
   }
 
   trangThaiDangNhap1(){
