@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="w3-bar w3-blue">
-  <a *ngIf="!trangThaiDangNhap1()" class="w3-bar-item w3-button w3-right" routerLink="/DangNhap" >Dang nhap</a>
+  <a *ngIf="!trangThaiDangNhap1()" class="w3-bar-item w3-button w3-right" routerLink="/DangNhap" >Đăng nhập</a>
   <a *ngIf="trangThaiDangNhap1()" class="w3-bar-item w3-button w3-right">{{tenDangNhap}}</a>
   <app-gio-hang *ngIf="trangThaiDangNhap1()" [dsSanPham]="dsSp"></app-gio-hang>
 </div>
@@ -16,14 +16,14 @@
         <td colspan="2" class="text-center-row"><img src="img_avatar2.png" alt="Avatar" class="avatar"></td>
       </tr>
       <tr>
-        <td>{{data.name}}</td>
+        <td>Tên : {{data.name}}</td>
       </tr>
       <tr>
-        <td>Gia:</td>
+        <td>Giá : </td>
         <td>{{data.price}}</td>
       </tr>
       <tr>
-        <td>Mieu ta:</td>
+        <td>Miêu tả : </td>
         <td>{{data.mieuTa}}</td>
       </tr>
       <tr>

@@ -15,7 +15,6 @@ export class GioHangComponent implements OnInit {
 
   }
   removeSp(index:any){
-    console.log(index);
     this.dsSanPham.splice(index,1);
   }
 }
