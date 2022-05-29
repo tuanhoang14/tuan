@@ -9,6 +9,7 @@ export class DangNhapService {
 
 
   constructor() { }
+
   DangNhap(tenDangNhap:string,matKhau:string){
     if( tenDangNhap == "123" && matKhau == "123"){
       this.tenDangNhap = 'Tuan';
@@ -16,6 +17,17 @@ export class DangNhapService {
       return true;
     }
     return false;
+  }
+
+  saveData() {
+    sessionStorage.setItem('trangThaiDangNhap', '1');
+    sessionStorage.setItem('tenDangNhap', 'Pakistan');
+  }
+  getData() {
+    return sessionStorage.getItem('tenDangNhap');
+  }
+  removeData() {
+    sessionStorage.removeItem('tenDangNhap');
   }
 }
 export interface TaiKhoan {

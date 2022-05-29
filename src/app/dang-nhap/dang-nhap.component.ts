@@ -22,6 +22,7 @@ export class DangNhapComponent implements OnInit {
   }
   dangNhap(){
     this.dangNhapService.DangNhap(this.tenDangNhap,this.matKhau) ? this.router.navigate(['/TrangBanHang']): alert("Ten dang nhap hoac mat khau sai");
+    this.dangNhapService.saveData();
   }
 }
 export interface TaiKhoan {

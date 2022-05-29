@@ -39,6 +39,7 @@ export class TrangChuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.dangNhapService.getData());
   }
 
   filterTest(value: any){
