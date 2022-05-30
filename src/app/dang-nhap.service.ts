@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,28 +8,38 @@ export class DangNhapService {
   trangThaiDangNhap : number = 0;
   tenDangNhap:string = '';
 
-  TaiKhoan1 = ELEMENT_DATA;
+  public TaiKhoan1 = ELEMENT_DATA;
 
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   DangKy(tenDangNhap:string,matKhau:string){
     let data =  {id: 1, name: tenDangNhap ,matKhau: matKhau};
     this.TaiKhoan1.push(data);
+    alert('Đăng ký thành công');
+    this.router.navigate(['/TrangBanHang'])
   }
 
   DangNhap(tenDangNhap:string,matKhau:string){
-    if( tenDangNhap == "123" && matKhau == "123"){
-      this.tenDangNhap = 'Tuan';
-      this.trangThaiDangNhap = 1;
-      return true;
+    console.log(this.TaiKhoan1);
+    for (let i = 0; i < this.TaiKhoan1.length ; i++) {
+      let a = this.TaiKhoan1[i].name;
+      let b = this.TaiKhoan1[i].matKhau;
+      if( tenDangNhap == this.TaiKhoan1[i].name && matKhau == this.TaiKhoan1[i].matKhau){
+        this.tenDangNhap = tenDangNhap;
+        this.trangThaiDangNhap = 1;
+        return true;
+      }
     }
+
     return false;
   }
 
   saveData() {
     sessionStorage.setItem('trangThaiDangNhap', '1');
-    sessionStorage.setItem('tenDangNhap', 'Pakistan');
+    sessionStorage.setItem('tenDangNhap', '');
   }
   getData() {
     return sessionStorage.getItem('tenDangNhap');
@@ -45,5 +56,5 @@ export interface TaiKhoan {
 
 const ELEMENT_DATA: TaiKhoan[] = [
   {id: 1, name: '123',matKhau: "123"},
-  {id: 2, name: 'Helium', matKhau:"null"},
+  {id: 2, name: 'Helium', matKhau:"123"},
 ];

@@ -20,7 +20,7 @@ export class DangKyComponent implements OnInit {
   ngOnInit(): void {
   }
   dangNhap(){
-    this.dangNhapService.DangNhap(this.tenDangNhap,this.matKhau) ;
+    this.dangNhapService.DangKy(this.tenDangNhap,this.matKhau) ;
   }
 
 }

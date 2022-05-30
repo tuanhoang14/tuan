@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="w3-bar w3-blue">
   <a *ngIf="!trangThaiDangNhap1()" class="w3-bar-item w3-button w3-right" routerLink="/DangNhap" >Đăng nhập</a>
+  <a *ngIf="!trangThaiDangNhap1()" class="w3-bar-item w3-button w3-right" routerLink="/DangKy" >Đăng ký</a>
   <a *ngIf="trangThaiDangNhap1()" class="w3-bar-item w3-button w3-right">{{tenDangNhap}}</a>
   <app-gio-hang *ngIf="trangThaiDangNhap1()" [dsSanPham]="dsSp"></app-gio-hang>
 </div>
