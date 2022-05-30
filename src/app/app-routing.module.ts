@@ -1,3 +1,4 @@
+import { DangKyComponent } from './dang-ky/dang-ky.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DangNhapComponent } from './dang-nhap/dang-nhap.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   {path: 'TrangBanHang', component: TrangChuComponent},
   {path: 'DangNhap', component: DangNhapComponent},
   {path: 'GioHang', component: GioHangComponent},
+  {path: 'DangKy', component: DangKyComponent},
 ];
 
 @NgModule({

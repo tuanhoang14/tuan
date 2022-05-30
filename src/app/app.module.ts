@@ -58,6 +58,7 @@ import {
 	IgxIconModule,
 	IgxDividerModule
  } from "igniteui-angular";
+import { DangKyComponent } from './dang-ky/dang-ky.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import {
     AppComponent,
     DangNhapComponent,
     TrangChuComponent,
-    GioHangComponent
+    GioHangComponent,
+    DangKyComponent
   ],
   imports: [
     BrowserModule,

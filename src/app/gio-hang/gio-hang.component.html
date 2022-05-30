@@ -1,6 +1,9 @@
 <div class="dropdown">
   <button class="dropbtn">Giỏ hàng</button>
-  <div class="dropdown-content" *ngFor="let data of dsSanPham; let i = index" >
-    <div><a>Tên : {{data.name}} || Giá : {{data.price}}</a> <button (click)="removeSp(i)">Xóa</button></div>
+  <div class="dropdown-content">
+    <div *ngFor="let data of dsSanPham; let i = index">
+      <a>Tên : {{ data.name }} || Giá : {{ data.price }}</a>
+      <button (click)="removeSp(i)">Xóa</button>
+    </div>
   </div>
 </div>
